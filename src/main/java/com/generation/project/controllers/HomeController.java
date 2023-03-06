@@ -9,10 +9,9 @@ public class HomeController
 {	
 	
 	@GetMapping("/")
-	@ResponseBody
-	public String test()
+	public String home()
 	{
-		return "sto funzionando";
+		return "home.html";
 	}
 	
 }
