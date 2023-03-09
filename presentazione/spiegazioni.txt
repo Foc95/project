@@ -1,0 +1,88 @@
+ProjectApplication:
+Questo codice Java definisce la classe principale dell'applicazione, chiamata "ProjectApplication". La classe è annotata con "@SpringBootApplication", che indica che si tratta di una classe di configurazione per un'applicazione Spring Boot.
+Il metodo "main" della classe è il punto di ingresso dell'applicazione, che viene chiamato quando si avvia l'applicazione. Il metodo "main" utilizza il metodo "run" della classe "SpringApplication" per avviare l'applicazione. Il primo argomento del metodo "run" è la classe principale dell'applicazione (in questo caso, "ProjectApplication"), mentre il secondo argomento sono gli argomenti della riga di comando passati all'applicazione al momento dell'avvio.
+
+Context
+Questo è un esempio di classe di configurazione Spring, che utilizza le annotazioni per definire i bean di Spring da utilizzare nell'applicazione.
+
+La classe è annotata con "@Configuration", che indica che si tratta di una classe di configurazione Spring.
+
+La classe definisce quattro bean utilizzando i metodi annotati con "@Bean":
+
+Il primo bean "db" restituisce un'istanza di "Database", passando i parametri "spring", "root" e "root" al costruttore.
+Il secondo bean "daoutenti" restituisce un'istanza di "DAOUtenti", che probabilmente è una classe che implementa la logica di accesso ai dati per gli utenti.
+Il terzo bean "UtenteMappa" restituisce un'istanza di "Utente", che ha uno scope di "prototype" e una priorità di "Primary". Inoltre, richiede un parametro "Map<String, String> riga" come input. Questo bean viene utilizzato per creare istanze di "Utente" a partire dai dati di una mappa, utilizzando il metodo "fromMap" dell'oggetto "Utente".
+In generale, questa classe di configurazione definisce i bean di Spring necessari per l'applicazione, che verranno utilizzati da altri componenti dell'applicazione attraverso l'iniezione di dipendenza di Spring.
+
+ServletInitializer:
+Questo codice Java definisce una classe di inizializzazione del servlet per un'applicazione Spring Boot. La classe "ServletInitializer" estende "SpringBootServletInitializer", una classe di utilità fornita da Spring Boot per configurare l'applicazione come servlet.
+
+Il metodo "configure" della classe viene sovrascritto per configurare l'applicazione come servlet. Il metodo riceve un'istanza di "SpringApplicationBuilder", che viene utilizzata per configurare l'applicazione Spring Boot.
+
+Nel metodo "configure", l'istanza di "SpringApplicationBuilder" viene utilizzata per impostare la classe principale dell'applicazione come "ProjectApplication" attraverso il metodo "sources". Questo indica all'applicazione di utilizzare "ProjectApplication" come classe principale, che viene eseguita al momento dell'avvio dell'applicazione.
+
+In generale, questa classe di inizializzazione del servlet è utilizzata per integrare un'applicazione Spring Boot in un contenitore servlet come Tomcat o Jetty, in modo che l'applicazione possa essere distribuita come file WAR.
+
+HomeController:
+Questa classe Java è un esempio di un controller Spring MVC. La classe è annotata con "@Controller", che indica a Spring che si tratta di un componente del controller.
+
+Il metodo "home" è annotato con "@GetMapping("/")", che indica che il metodo risponde alle richieste GET all'URL "/". Quando viene ricevuta una richiesta GET a "/", il metodo "home" viene eseguito e restituisce la stringa "home.html".
+
+La stringa "home.html" rappresenta il nome della vista che viene restituita in risposta alla richiesta. In questo caso, "home.html" rappresenta una pagina HTML, che viene restituita al client come risposta alla richiesta. Il client visualizza quindi la pagina HTML nella sua interfaccia utente.
+
+In generale, questo controller Spring MVC gestisce le richieste GET all'URL "/" e restituisce una pagina HTML come risposta.
+
+
+UtentiController:
+Questa è una classe Java che rappresenta un controller Spring MVC per la gestione degli utenti. La classe è annotata con "@Controller" e "@RequestMapping("/utenti")", che indica che la classe rappresenta un componente controller che gestisce le richieste relative agli utenti e che tutte le richieste iniziano con l'URL "/utenti".
+
+La classe ha vari metodi annotati con "@GetMapping", che indicano che questi metodi gestiscono le richieste GET all'URL specificato. La maggior parte di questi metodi accettano parametri "Model" o "RequestParam", che sono usati per passare i dati alla vista o per ricevere i parametri dalle richieste del client.
+
+Il metodo "elencoUtenti" restituisce la lista di tutti gli utenti e la passa alla vista tramite il parametro "model". Il metodo "elimina" cancella l'utente con l'ID specificato e reindirizza il client alla pagina di elenco utenti. Il metodo "dettagli" mostra i dettagli dell'utente con l'ID specificato. Il metodo "formmodifica" mostra il form di modifica dell'utente con l'ID specificato. Il metodo "modificautente" aggiorna l'utente con i parametri forniti dal client e reindirizza il client alla pagina di elenco utenti. Il metodo "formnuovoutente" mostra il form per creare un nuovo utente. Il metodo "aggiungiUtente" crea un nuovo utente con i parametri forniti dal client e reindirizza il client alla pagina di elenco utenti.
+
+La classe ha anche due campi annotati con "@Autowired", che indicano che Spring deve iniettare le dipendenze dei tipi corrispondenti. "du" viene iniettato con l'istanza del "DAOUtenti" e "context" viene iniettato con l'istanza di "ApplicationContext". Il metodo "aggiorna" usa l'istanza di "ApplicationContext" per creare un nuovo oggetto "Utente" con i parametri forniti dal client.
+
+In generale, questo controller Spring MVC gestisce le richieste relative agli utenti e reindirizza il client alle viste appropriate in base alla richiesta del client.
+
+DaoUtenti:
+Questa è una classe DAO (Data Access Object) per l'entità "Utente". Utilizza l'annotazione "@Autowired" per iniettare un'istanza della classe "Database" e del contesto dell'applicazione.
+
+La classe ha metodi per le operazioni CRUD (create, read, update, delete) sull'entità Utente. Il metodo "read" esegue una query sul database e restituisce una lista di oggetti Utente, basata sui risultati della query.
+
+Il metodo "leggiTutti" utilizza il metodo "read" per selezionare tutti i record dalla tabella Utenti.
+
+Il metodo "create" inserisce un nuovo record nella tabella Utenti.
+
+Il metodo "delete" cancella un record dalla tabella Utenti.
+
+Il metodo "update" aggiorna un record nella tabella Utenti.
+
+Il metodo "cercaPerId" restituisce un singolo oggetto Utente, basato sul valore dell'ID fornito come parametro di input.
+
+Utente:
+Questo è un esempio di classe Java denominata "Utente", che estende la classe "Entity". La classe "Utente" contiene le proprietà e i metodi per gestire le informazioni relative a un utente.
+
+La classe "Utente" ha le seguenti proprietà:
+
+nome: una stringa che rappresenta il nome dell'utente
+cognome: una stringa che rappresenta il cognome dell'utente
+dob: una stringa che rappresenta la data di nascita dell'utente
+nazionalita: una stringa che rappresenta la nazionalità dell'utente
+importoIn: un valore double che rappresenta l'importo che l'utente ha depositato nel sistema
+stipendio: un valore booleano che rappresenta se l'utente ha uno stipendio o meno
+La classe "Utente" ha anche i seguenti metodi getter e setter per accedere alle proprietà:
+
+getNome(): restituisce il nome dell'utente
+setNome(String nome): imposta il nome dell'utente
+getCognome(): restituisce il cognome dell'utente
+setCognome(String cognome): imposta il cognome dell'utente
+getDob(): restituisce la data di nascita dell'utente
+setDob(String dob): imposta la data di nascita dell'utente
+getNazionalita(): restituisce la nazionalità dell'utente
+setNazionalita(String nazionalita): imposta la nazionalità dell'utente
+getImportoIn(): restituisce l'importo che l'utente ha depositato nel sistema
+setImportoIn(double importoIn): imposta l'importo che l'utente ha depositato nel sistema
+isStipendio(): restituisce un valore booleano che rappresenta se l'utente ha uno stipendio o meno
+setStipendio(boolean stipendio): imposta se l'utente ha uno stipendio o meno
+
+
